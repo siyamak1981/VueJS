@@ -8,27 +8,29 @@
     <title>Title Page</title>
     <script src="js/vue.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
-        <input type="text" v-on:input="changeTitle">
-        <p>{{ title }}</p>
+       
+        <h1><marquee v-once>{{ title }}</marquee></h1><br>
         <span>{{ foo()  }} - <a v-bind:href="link">GOOGLE</a></span>
+        <p v-html="iconlink"></p>
     </div>
 </body>
 <script>
     new Vue({
         el: "#app",
         data: {
-            title: "hello world",
+            title: "hello world!",
             link:"http://google.com",
+            iconlink:"<i class ='fa fa-camera'></i>",
         },
         methods: {
-            changeTitle: function (event) {
-                this.title = event.target.value;
-            },
+            
             foo:function(){
-                return "u can change the above of sentense ";
+                 this.title ='hello siyamak';
+                return this.title;
                 
             }
         }
