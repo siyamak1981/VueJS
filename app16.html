@@ -1,0 +1,45 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="app/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="container" id="app">
+        <h1 v-if="show">y can see me !</h1>
+        <h1 v-else="show">now u can see this sentenses</h1>
+        <!-- tmplete tag  دیده نمیشود در دام یا اینسپکت -->
+        <template v-if="show">
+            <h1>headeang</h1>
+        </template>
+        <!-- این تو اسپکت المنت نشون داده میشه -->
+        <h2 v-show="show" >do u also see me!!</h2>
+        <br>
+        <button type="text" @click="show=!show">switch</button>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            show: true,
+        },
+
+    })
+
+</script>
+
+</html>

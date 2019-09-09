@@ -1,0 +1,47 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="app/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="container" id="app">
+        <div class="demo" :style="{backgroundColor:color}"></div>
+        <div class="demo" :style="myStyle"></div>
+        <br>
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            color: 'gray',
+            width: 100,
+        },
+        computed: {
+            myStyle: function () {
+                return {
+                    backgroundColor: this.color,
+                    width: this.width + 'px'
+                }
+            }
+        }
+    })
+
+</script>
+
+</html>
