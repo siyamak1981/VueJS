@@ -1,0 +1,40 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="app/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="container" id="app">
+        <h1 class="text-center">Hello World</h1>
+        <div class = "demo" v-on:click="attachRed = !attachRed" v-bind:class="{red:attachRed}" ></div>
+        <div class = "demo" v-bind:class="{red:attachRed}"></div>
+        <div class = "demo" @click="attachGreen=!attachGreen" :class="{green:attachGreen}"></div>
+        <div class = "demo" @click="attachBlue=!attachBlue" :class="{blue:attachBlue}"></div>
+    </div>
+</body>
+<script>
+ new Vue({
+     el:"#app",
+     data:{
+         attachRed:false,
+         attachGreen:false,
+         attachBlue:true,
+     }
+ }) 
+ 
+</script>
+
+</html>

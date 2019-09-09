@@ -42,6 +42,14 @@
                 console.log('Computed')
                 return this.counter > 5 ? "thats greater than 5" : "thats smaller than 5";
             }
+        },
+        watch:{
+            counter:function(value){
+                var vm =this;
+                setTimeout(function(){
+                    vm.counter=0;
+                },2000);
+            }
         }
     });
 </script>
