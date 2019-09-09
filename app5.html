@@ -1,0 +1,49 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <h1 class="text-center">Hello World</h1>
+        <button v-on:click="increase">increas</button>
+        <button v-on:click="decrease">decrease</button>
+        <p>{{counter}}</p>
+        <p>Result:{{result}}</p>
+
+    </div>
+</body>
+<script>
+    new Vue({
+
+        el: "#app",
+        data: {
+            counter: 0,
+            result: '',
+        },
+        methods: {
+            increase: function () {
+
+                this.counter++;
+                this.result = this.counter > 5 ? "greater 5" : "smaller 5";
+            },
+            decrease: function () {
+
+                this.counter--;
+                this.result = this.counter > 5 ? "greater 5" : "smaller 5";
+            },
+        }
+
+    });
+</script>
+
+</html>
