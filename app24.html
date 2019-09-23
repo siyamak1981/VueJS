@@ -15,7 +15,7 @@
 <body>
   <div id="app">
     <h1 ref="heading">{{ title }}</h1>
-    <button v-on:click="show">Show Paragraph</button>
+    <button v-on:click="show" ref = "myButton">Show Paragraph</button>
     <p v-if="showParagraph">This is not always visible</p>
   </div>
   <div id="app2">
@@ -25,16 +25,19 @@
 
 </body>
 <script>
+  var data = {
+
+    title: 'The VueJS Instance',
+    showParagraph: false
+  }
    var vm1 = new Vue({
     el: '#app',
-    data: {
-      title: 'The VueJS Instance',
-      showParagraph: false
-    },
+    data: data,
     methods: {
       show: function () {
         this.showParagraph = true;
         this.updateTitle('The VueJS Instance (Updated)');
+        this.$refs.myButton.innerText = 'Test';
       },
       updateTitle: function (title) {
         this.title = title;
@@ -51,10 +54,9 @@
       }
     }
   });
-  
-  vm1.newProw ="NeW!";
-  console.log(vm1);
 
+  console.log(vm1.$data === data);
+  vm1.$refs.heading.innerText= 'Somthing Else';
   setTimeout(function(){
     vm1.title='Changed by timer';
     vm1.show();
