@@ -9,32 +9,34 @@
     <script src="js/vue.js" type="text/javascript"></script>
     <script src="js/index.js" type="text/javascript"></script>
 </head>
+
 <body>
-        <div id="app">
-    <button v-on:click="increase">klick</button>
-   <p>{{ count }}</p>
-   <h2 v-on:mousemove="coordinate">Coordinat{{ x }} \ {{ y }}</h2></div>
+    <div id="app">
+        <button v-on:click="increase">klick</button>
+        <p>{{ count }}</p>
+        <h2 v-on:mousemove="coordinate">Coordinat{{ x }} \ {{ y }}</h2>
+    </div>
 </body>
 <script>
     new Vue({
         el: "#app",
-        data:{
-       count:0,
-       x:0,
-       y:0,
-        },        
- methods:{
-     increase:function(){
-         this.count++;
+        data: {
+            count: 0,
+            x: 0,
+            y: 0,
+        },
+        methods: {
+            increase: function () {
+                this.count++;
 
-     },
-     coordinate:function(event){
-        this.x=event.clientX;
-        this.y=event.clientY;
-    }
+            },
+            coordinate: function (event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            }
 
-    },
- });
+        },
+    });
 </script>
 
 </html>
