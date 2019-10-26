@@ -1,0 +1,49 @@
+<!doctype <!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <script src="js/vue.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(todo, index) in todos">
+                {{ parentMessage }}={{ todo.txt }}_{{index}}
+            </li>
+        </ul>
+        <ol>
+            <li v-for="value in values">
+                {{ value }}
+
+            </li>
+        </ol>
+    </div>
+
+
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            parentMessage: "hello parent",
+            todos: [
+                { txt: "siyamak" },
+                { txt: "diyana" }
+            ],
+            values: {
+                title: "hello world",
+                author: "hello world",
+                date: '2016-04-10'
+
+            }
+        }
+    })
+</script>
+
+</html>
