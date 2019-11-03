@@ -1,6 +1,12 @@
-# isdir function 
+# import os
 
-from urllib.parse import urlparse
 
-o = urlparse('http://www.parsiankhazar.com')
-print(o._replace(scheme='https'))
+# os.chdir('Template')
+# print(os.getcwd())
+# for file in os.listdir():
+#     if file.startswith("index") and file.endswith(".html"):
+#         os.rename(file, "Vue" + ".py")
+# print(os.listdir())
+
+
+
