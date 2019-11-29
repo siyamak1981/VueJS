@@ -18,30 +18,25 @@
 
 <body>
     <div class="container" id="app">
-        <h1 class="text-center">Hello World</h1>
-        <div class="demo" :style="{backgroundColor:color}"></div>
-        <div class="demo" :style="myStyle"></div>
-        <div class="demo" :style="[myStyle,{height:width + 'px '}]"></div>
+        <h1 v-if="show">y can see me !</h1>
+        <h1 v-else="show">now u can see this sentenses</h1>
+        <!-- tmplete tag  دیده نمیشود در دام یا اینسپکت -->
+        <template v-if="show">
+            <h1>headeang</h1>
+        </template>
+        <!-- این تو اسپکت المنت نشون داده میشه -->
+        <h2 v-show="show" >do u also see me!!</h2>
         <br>
-        <input type="text" v-model="color">
-        <input type="text" v-model="width">
+        <button type="text" @click="show=!show">switch</button>
+
     </div>
 </body>
 <script>
     new Vue({
         el: "#app",
         data: {
-            color: 'gray',
-            width: 100,
+            show: true,
         },
-        computed: {
-            myStyle: function () {
-                return {
-                    backgroundColor: this.color,
-                    width: this.width + 'px'
-                }
-            }
-        }
 
     })
 

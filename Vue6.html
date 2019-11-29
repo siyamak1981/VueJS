@@ -18,14 +18,14 @@
 
 <body>
     <div class="container" id="app">
-        <h1 v-if="show">y can see me !</h1>
-        <h1 v-else="show">now u can see this sentenses</h1>
-        <!-- tmplete tag  دیده نمیشود در دام یا اینسپکت -->
-        <template v-if="show">
-            <h1>headeang</h1>
-        </template>
-        <br>
-        <button type="text" @click="show=!show">switch</button>
+        <ul>
+            <h2>
+                </li>
+                <li v-for="ingradient in ingradients">
+                    {{ ingradient }}
+                </li>
+            </h2>
+        </ul>
 
     </div>
 </body>
@@ -33,7 +33,7 @@
     new Vue({
         el: "#app",
         data: {
-            show: true,
+            ingradients: ['meat', 'beaf', 'fruit', 'cookie'],
         },
 
     })

@@ -18,34 +18,26 @@
 
 <body>
     <div class="container" id="app">
-        <h1 class="text-center">Hello World</h1>
-        <div class = "demo" @click="attachRed = !attachRed" :class="divClasses" ></div>
-        <div class = "demo" v-bind:class="{red:attachRed}"></div>
-        <div class = "demo" @click="attachGreen=!attachGreen" :class="{green:attachGreen}"></div>
-        <div class = "demo" @click="attachBlue=!attachBlue" :class="{blue:attachBlue}"></div>
-        <div class = "demo"  :class="color"></div>
-        <div class = "demo"  :class="[color, {red:!attachRed}]"></div>
-        <input type="text" v-model="color" >
+        <h1 v-if="show">y can see me !</h1>
+        <h1 v-else="show">now u can see this sentenses</h1>
+        <!-- tmplete tag  دیده نمیشود در دام یا اینسپکت -->
+        <template v-if="show">
+            <h1>headeang</h1>
+        </template>
+        <br>
+        <button type="text" @click="show=!show">switch</button>
+
     </div>
 </body>
 <script>
- new Vue({
-     el:"#app",
-     data:{
-         attachRed:false,
-         attachGreen:false,
-        color:'green',
-     },
-     computed:{
-         divClasses:function(){
-             return {
-                 red:this.attachRed,
-                 blue:!this.attachRed,
-             }
-         }
-     }
- }) 
- 
+    new Vue({
+        el: "#app",
+        data: {
+            show: true,
+        },
+
+    })
+
 </script>
 
 </html>

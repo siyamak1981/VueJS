@@ -26,7 +26,18 @@
                 </li>
             </h2>
         </ul>
-
+        <hr>
+        <template v-for="(ingradient, index) in ingradients">
+            <h4>{{ ingradient}}</h4>
+            <p>{{ index }}</p>
+        </template>
+        <hr>
+        </hr>
+        <ul>
+            <li v-for="person in persons">{{ person.name}}
+                <div v-for="(value, key, index) in person">{{ key}}:{{value}} ({{index}})</div>
+            </li>
+        </ul>
     </div>
 </body>
 <script>
@@ -34,6 +45,11 @@
         el: "#app",
         data: {
             ingradients: ['meat', 'beaf', 'fruit', 'cookie'],
+            persons: [
+
+                { name: 'siyamak', age: 38, color: 'black' },
+                { name: 'diyana', age: 3, color: 'white' }
+            ]
         },
 
     })

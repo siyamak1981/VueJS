@@ -2,32 +2,74 @@
 <html lang="">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="app/app.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title Page</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<style>
-
-</style>
 
 <body>
-    <div class="container" id="app">
-        <br>
-        <span v-for="n in 10">{{n}}</span>
-    </div>
+  <div id="app">
+    <h1 ref="heading">{{ title }}</h1>
+    <button v-on:click="show">Show Paragraph</button>
+    <p v-if="showParagraph">This is not always visible</p>
+  </div>
+  <div id="app2">
+    <h1 ref="heading">{{ title }}</h1>
+    <button @click="onChange">change somthing in vue1</button>
+  </div>
+
 </body>
 <script>
-    new Vue({
-        el: "#app",
+   var vm1 = new Vue({
+    el: '#app',
+    data: {
+      title: 'The VueJS Instance',
+      showParagraph: false
+    },
+    methods: {
+      show: function () {
+        this.showParagraph = true;
+        this.updateTitle('The VueJS Instance (Updated)');
+      },
+      updateTitle: function (title) {
+        this.title = title;
+      }
+    },
+    computed: {
+      lowercaseTitle: function () {
+        return this.title.toLowerCase();
+      }
+    },
+    watch: {
+      title: function (value) {
+        alert('Title changed, new value: ' + value);
+      }
+    }
+  });
+  
+  vm1.newProw ="NeW!";
+  console.log(vm1);
 
-
-    })
+  setTimeout(function(){
+    vm1.title='Changed by timer';
+    vm1.show();
+  }, 3000);
+ var vm2 =  new Vue({
+    el: '#app2',
+    data: {
+      title: 'the secound instance'
+    },
+    methods: {
+      onChange: function () {
+        vm1.title = 'changed!';
+      }
+    }
+  })
 
 </script>
 

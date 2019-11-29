@@ -1,4 +1,4 @@
-<!doctype <!DOCTYPE html>
+<!DOCTYPE <!DOCTYPE html>
 <html lang="">
 
 <head>
@@ -6,47 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title Page</title>
-    <script src="js/vue.js" type="text/javascript"></script>
-    <script src="js/index.js" type="text/javascript"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class ="container">
-    <div id="app">
-        <br><br>
-        <button v-on:click="increase(2,$event)">klick</button>
-        <button v-on:click="counter++">klick</button>
-        <p>{{ count * 2  > 10 ?'its greater than 10': 'smaler than 10'}}</p>
-        <h2 v-on:mousemove="coordinate">Coordinat{{ x }} \ {{ y }}---<span v-on:mousemove.stop>go a head</span></h2>
-        <input v-on:keyup.enter.space="alertme"></input>
-    </div></div>
+    <div class="container" id="app">
+        <h1 class="text-center">Hello World</h1>
+        <input v-model="title" ><p>{{title}}</p>
+       
+    </div>
 </body>
 <script>
-    new Vue({
-        el: "#app",
-        data: {
-            count: 0,
-            x: 0,
-            y: 0,
-        },
-        methods: {
-            increase: function (step, event) {
-                this.count += step;
+   new Vue({
 
-            },
-            coordinate: function (event) {
-                this.x = event.clientX;
-                this.y = event.clientY;
-            },
-            alertme: function () {
-                alert('نباید بین کلمات فاصله بگدارید!');
-            }
+el:"#app",
+data:{
+    title:"hello siyamak!",
+},
 
-        },
-    });
+
+   });
 </script>
 
 </html>

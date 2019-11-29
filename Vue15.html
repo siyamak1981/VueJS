@@ -11,66 +11,81 @@
   <script src="js/vue.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
+<style>
+    body {
+        background: #20262E;
+        padding: 20px;
+        font-family: Helvetica;
+      }
+      
+      #app {
+        background: #fff;
+        border-radius: 4px;
+        padding: 20px;
+        transition: all 0.2s;
+      }
+      
+      li {
+        margin: 8px 0;
+      }
+      
+      h2 {
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      
+      del {
+        color: rgba(0, 0, 0, 0.3);
+      }
+</style>
 <body>
-  <div id="app">
-    <h1 ref="heading">{{ title }}</h1>
-    <button v-on:click="show">Show Paragraph</button>
-    <p v-if="showParagraph">This is not always visible</p>
+<div id="app">
+    <h2>{{ title }}</h2>
+  <button @click="title='changed'">
+  Updated title
+  </button>
+  <button @click="destroy">
+  Destroy
+  </button>
   </div>
-  <div id="app2">
-    <h1 ref="heading">{{ title }}</h1>
-    <button @click="onChange">change somthing in vue1</button>
-  </div>
-
 </body>
 <script>
-   var vm1 = new Vue({
-    el: '#app',
-    data: {
-      title: 'The VueJS Instance',
-      showParagraph: false
-    },
-    methods: {
-      show: function () {
-        this.showParagraph = true;
-        this.updateTitle('The VueJS Instance (Updated)');
-      },
-      updateTitle: function (title) {
-        this.title = title;
-      }
-    },
-    computed: {
-      lowercaseTitle: function () {
-        return this.title.toLowerCase();
-      }
-    },
-    watch: {
-      title: function (value) {
-        alert('Title changed, new value: ' + value);
-      }
-    }
-  });
-  
-  vm1.newProw ="NeW!";
-  console.log(vm1);
-
-  setTimeout(function(){
-    vm1.title='Changed by timer';
-    vm1.show();
-  }, 3000);
- var vm2 =  new Vue({
-    el: '#app2',
-    data: {
-      title: 'the secound instance'
-    },
-    methods: {
-      onChange: function () {
-        vm1.title = 'changed!';
-      }
-    }
-  })
-
+    new Vue({
+        el: "#app",
+        data: {
+        title:'vue title',
+          beforeCreat:function(){
+          console.log('beforeCreat()');
+          },
+          created:function(){
+          console.log('reated()');
+          },
+           beforeMount:function(){
+          console.log('beforeMount()');
+          },
+           mounted:function(){
+          console.log('mounted()');
+          },
+           beforeUpdate:function(){
+          console.log('beforeUpdate()');
+          },
+           updated:function(){
+          console.log('updated()');
+          },
+           beforeDestroy:function(){
+          console.log('beforeDestroy()');
+          },
+           Destroyed:function(){
+          console.log('destroyed()');
+          },
+          
+        },
+        methtods:{
+        destroy:function(){
+        this.$destroy();
+        }
+        }
+       
+      })
 </script>
-
 </html>

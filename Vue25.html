@@ -15,10 +15,11 @@
 <body>
     <div class="container" id="app">
         <h1 class="text-center">Hello World</h1>
-        <button v-on:click="increase">increas</button>
-        <button v-on:click="decrease">decrease</button>
+        <button v-on:click="counter++">increas</button>
+        <button v-on:click="counter--">decrease</button>
+        <button v-on:click="secoundCounter++">increase Secound</button>
         <p>{{counter}}</p>
-        <p>Result:{{result}}</p>
+        <p>Result:{{ result() }} | {{ output }}</p>
 
     </div>
 </body>
@@ -28,23 +29,29 @@
         el: "#app",
         data: {
             counter: 0,
-            result: '',
+            secoundCounter: 0,
+        },
+        computed: {
+            output: function () {
+                console.log('Computed')
+                return this.counter > 5 ? "thats greater than 5" : "thats smaller than 5";
+            }
         },
         methods: {
-            increase: function () {
-
-                this.counter++;
-                this.result = this.counter > 5 ? "greater 5" : "smaller 5";
-            },
-            decrease: function () {
-
-                this.counter--;
-                this.result = this.counter > 5 ? "greater 5" : "smaller 5";
-            },
+            result() {
+                console.log('Computed')
+                return this.counter > 5 ? "thats greater than 5" : "thats smaller than 5";
+            }
+        },
+        watch:{
+            counter:function(value){
+                var vm =this;
+                setTimeout(function(){
+                    vm.counter=0;
+                },2000);
+            }
         }
-
     });
 </script>
 
 </html>
-

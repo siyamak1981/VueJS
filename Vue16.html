@@ -1,129 +1,49 @@
-<!DOCTYPE <!DOCTYPE html>
+<!doctype <!DOCTYPE html>
 <html lang="">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title Page</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/vue.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <script src="js/vue.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
 </head>
 
 <body>
-  <div id="app">
-    <h1 ref="heading">{{ title }}</h1>
-    <button v-on:click="show" ref="myButton">Show Paragraph</button>
-    <p v-if="showParagraph">This is not always visible</p>
-  </div>
-   <div id="app2">
-    <h1 ref="heading">{{ title }}</h1>
-    <button @click="onChange">change in vue1</button>
-  </div>
- <div id="app3">
- 
- </div>
-<style>
-  body {
-    background: red;
-    padding: 20px;
-    font-family: Helvetica;
-  }
-  
-  #app  {
-    background: #fff;
-    border-radius: 4px;
-    padding: 20px;
-    transition: all 0.2s;
-  }
-  #app2  {
-    margin-top:5px;
-     background: linen;
-    border-radius: 4px;
-    padding: 20px;
-    transition: all 0.2s;
-  }
-  button{
-    background:lightgreen;
-    height:40px;
-    border-radius:5px;
-    margin:20px;
-  }
-  
-  
-  
-  h1 {
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  
-  #app3 {
-    background: #fff;
-    border-radius: 4px;
-    padding: 20px;
-    transition: all 0.2s;
-    margin:5px;
-    color:black;
-  }
-</style>
+    <div id="app">
+        <ul>
+            <li v-for="(todo, index) in todos">
+                {{ parentMessage }}={{ todo.txt }}_{{index}}
+            </li>
+        </ul>
+        <ol>
+            <li v-for="value in values">
+                {{ value }}
+
+            </li>
+        </ol>
+    </div>
+
+
 </body>
 <script>
-  var data={
-    title:"The VueJS Instance",
-    showParagraph:false,
-    }
-    var vm = new Vue({
-    
-    data:data,
-    methods:{
-    show:function(){
-    this.showParagraph=true;
-    this.updateTitle("The VueJS Instance(Update)");
-    this.$refs.myButton.innerText="test";
-    },
-    updateTitle:function(title){
-      this.title=title;
-    },
-    },
-    computed:{
-    lowerCaseTitle:function(){
-    return this.title.toLowerCase();
-    }
-    },
-    watch:{
-    title:function(value){
-    alert('this test is update by value ' + value);
-    }
-    }
-    });
-    vm.$mount('#app')
-    console.log(vm.$data === data);
-    vm.$refs.heading.innerText="Somthing Else";
-    setTimeout(function(){
-    vm.title= "change by timer";
-    vm.show();
-    }, 3000)
-    var vm2 = new Vue({
-    el:'#app2',
-    data:{
-    title:'the secound instatnce',
-    },
-    methods:{
-    onChange:function(){
-    vm.title = "changed";
-    
-    },
-    },
+    new Vue({
+        el: "#app",
+        data: {
+            parentMessage: "hello parent",
+            todos: [
+                { txt: "siyamak" },
+                { txt: "diyana" }
+            ],
+            values: {
+                title: "hello world",
+                author: "hello world",
+                date: '2016-04-10'
+
+            }
+        }
     })
-    var vm3 = new Vue({
-    template:"<h1>HELLO</h1>"
-    });
-    vm3.$mount();
-    document.getElemetntById('app3').appendChild(vm3.$el);
-    
 </script>
 
 </html>
