@@ -34,10 +34,11 @@
 </style>
 <body>
 <div id = "app">
-    <p v-html="email"></p>
-    <input type="text" v-model = "email" :class ="{red:email.length < 2}">
+    <p v-once>{{email}}</p>
+    <p>{{email}}</p>
+  
     <input type="text" v-model="email" :class="[email.length < 2 ? 'red':'green']">
-    <p v-text="email"></p>
+   
     <button onclick="alert('signed up')" :disabled="email.lenght < 2">Submit</button>
 </div>
 </body>
@@ -45,7 +46,7 @@
 new Vue ({
     el:"#app",
     data:{
-        email :""
+        email :"siyamak@gmail.com"
     }
 })
 
