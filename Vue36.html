@@ -1,0 +1,89 @@
+<!doctype <!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+ 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container-fluid m-5 p-5">
+    <div id="app">
+        <div>{{message}}</div>
+        <h1>{{welcome}}</h1>
+        <h1>{{count}}</h1>
+        <button @click ='press'>ıncreament</button>
+
+    </div>
+</div>
+<script>
+const store =new Vuex.Store({
+    state:{
+        welcome:'hello dıyana',
+        count:0,
+    },
+    mutations:{
+            incre(state, payload){
+                state.count+=payload;
+            }
+    },
+    actions:{
+            incre(state,payload){
+                state.commit('incre', payload)
+            }
+    },
+    getters:{
+        welcome(state){
+            return state.welcome.toUpperCase();;
+        },
+        count(state){
+            return state.count;
+        }
+    }
+
+})
+    
+    new Vue({
+        el: "#app",
+        data(){
+            return {
+                message:'hello siyamak'
+            }
+        },
+        computed:{
+            welcome(){
+                return store.getters.welcome;
+            },
+            count(){
+                return store.getters.count;
+            }
+        },
+        methods:{
+            press(){
+                store.dispatch('incre', 20)
+            }
+        }
+   
+    })
+
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+<style>
+    body {
+        background: black;
+        color: wheat;
+
+    }
+</style>
+
+</html>
